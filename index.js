@@ -18,7 +18,13 @@ const songs = [
         artist: "Kiều Chi Cover",
         src: "media/Hạt Mưa Vương Vấn.mp3",
         cover: "./media/hạt mưa.jpg"
-    }
+    },
+     {
+        title: "Đơn Côi",
+        artist: "Kiều Chi Cover",
+        src: "media/Đơn Côi.mp3",
+        cover: "./media/đơn coi.jpg"
+    },
 ];
 
 let songIndex = 0;
@@ -32,8 +38,6 @@ const loadSong = (index) => {
     progress.value = 0
 }
 
-
-
 // Khởi tạo
 loadSong(songIndex);
 
@@ -42,7 +46,7 @@ song.onloadedmetadata = () => {
     progress.value = song.currentTime;
 };
 
-function playPause() {
+const playPause = () => {
     if (song.paused) {
         song.play();
         ctrIcon.classList.add("fa-pause");
@@ -54,7 +58,7 @@ function playPause() {
     }
 }
 
-function nextSong() {
+const  nextSong = () => {
     songIndex = (songIndex + 1) % songs.length;
     loadSong(songIndex);
     song.play();
@@ -62,7 +66,7 @@ function nextSong() {
     ctrIcon.classList.remove("fa-play");
 }
 
-function prevSong() {
+const  prevSong = () => {
     songIndex = (songIndex - 1 + songs.length) % songs.length;
     loadSong(songIndex);
     song.play();
@@ -81,3 +85,4 @@ progress.oninput = function() {
 };
 
 song.onended = nextSong;
+
